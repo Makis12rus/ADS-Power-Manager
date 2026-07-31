@@ -49,18 +49,84 @@
 ## 🏗️ Структура проекта
 
 <pre>
-ads_profile_manager/
+ADS-Power-Manager/
 ┣━━ 📄 main.py                  # Точка входа и инициализация приложения
+┣━━ 📄 requirements.txt         # Зависимости проекта (PySide6, Selenium, PyWin32)
+┣━━ 📄 README.md                # Документация проекта
+┣━━ 📄 .gitignore               # Исключения Git
+┃
 ┣━━ 📂 core/                    # Ядро системы (Константы, Реестр, WinAPI, Стили)
+┃   ┣━━ 📄 __init__.py
+┃   ┣━━ 📄 core.py              # Фасад ядра и реэкспорт системных API
 ┃   ┣━━ 📄 _constants.py        # Единый источник истины (SSOT)
+┃   ┣━━ 📄 _plugin_manager.py   # Диспетчер ленивой загрузки плагинов кошельков
+┃   ┣━━ 📄 _profiles_reg.py     # Реестр маппинга профилей
+┃   ┣━━ 📄 _registry.py         # Транзакционная работа с реестром Windows (HKCU)
 ┃   ┣━━ 📄 _credentials.py      # Безопасный сейф Windows Credential Manager
-┃   ┗━━ 📄 _watchdog.py         # Сторожевой процесс мониторинга GUI
-┣━━ 📂 system/                  # Потокобезопасная служба логирования
-┣━━ 📂 gui/                     # Главный интерфейс и компоновщики окон
-┣━━ 📂 moduls/                  # Изолированные модули
-┃   ┣━━ 📂 ads/                 # Режим ADS (Карусель, Автоматизация, Логика, API)
-┃   ┗━━ 📂 auto/                # Режим AUTO (IDE, Редактор Pygments, Песочница)
+┃   ┣━━ 📄 _watchdog.py         # Сторожевой процесс мониторинга GUI
+┃   ┣━━ 📄 _gas.py              # Сетевой оракул газа и комиссий
+┃   ┣━━ 📄 _patcher.py          # Патчер кэша расширений
+┃   ┣━━ 📄 style.py             # Фасад стилей и графики (PEP 562 Gateway)
+┃   ┣━━ 📄 _style_colors.py     # Палитра цветов
+┃   ┣━━ 📄 _style_qss.py        # QSS-стили виджетов
+┃   ┣━━ 📄 _style_backdrop.py   # Объемный фон с процедурным шумом (Dithering)
+┃   ┣━━ 📄 _style_texts.py      # HTML-шаблоны текстов
+┃   ┣━━ 📄 _style_graphics.py   # Векторный генератор иконок и флагов
+┃   ┣━━ 📄 _style_widgets.py    # Кастомные Qt-виджеты
+┃   ┣━━ 📄 _style_glow_button.py # Векторные кнопки с эффектом вдавливания
+┃   ┗━━ 📄 _style_circular_progress.py # Векторные кольца прогресса
+┃
+┣━━ 📂 system/                  # Системные службы
+┃   ┣━━ 📄 __init__.py
+┃   ┗━━ 📄 logger.py            # Потокобезопасный логгер с фильтрацией дубликатов
+┃
+┣━━ 📂 gui/                     # Презентационный слой и главное окно
+┃   ┣━━ 📄 __init__.py
+┃   ┣━━ 📄 main_window_gui.py   # Главное окно MainWindow (Mediator)
+┃   ┣━━ 📄 main_window_presenter.py # Контроллер окон и фоновые треды
+┃   ┣━━ 📄 mode_bar.py          # Пульт переключения режимов
+┃   ┣━━ 📄 sticky_dock.py       # Липкий док панели логов
+┃   ┗━━ 📄 info_panel.py        # Информационная панель
+┃
+┣━━ 📂 moduls/                  # Бизнес-модули
+┃   ┣━━ 📄 __init__.py
+┃   ┣━━ 📂 ads/                 # Режим ADS (Управление профилями AdsPower)
+┃   ┃   ┣━━ 📄 __init__.py
+┃   ┃   ┣━━ 📄 ads_gui.py       # Фасад UI элементов ADS
+┃   ┃   ┣━━ 📄 ads_logic.py     # Диспетчер конвейера ADS
+┃   ┃   ┣━━ 📄 ads_log_gui.py   # Панель логов и фильтрация
+┃   ┃   ┣━━ 📄 flow_layout.py   # Математика переноса чипсов
+┃   ┃   ┣━━ 📄 profile_card_view.py # Виртуальный скролл карусели
+┃   ┃   ┣━━ 📄 profile_panel.py # Панель управления профилями
+┃   ┃   ┣━━ 📄 profile_presenter.py # Медиатор управления состояниями
+┃   ┃   ┣━━ 📄 profile_model_manager.py # Модель данных профилей
+┃   ┃   ┣━━ 📄 profile_execution_engine.py # Многопоточный движок выполнения
+┃   ┃   ┣━━ 📄 settings_panel.py# Настройки и форма параметров
+┃   ┃   ┣━━ 📄 _base_adapter.py # Контракт BaseWalletAdapter
+┃   ┃   ┣━━ 📄 _api_client.py   # Async HTTP клиент AdsPower API (1 RPS)
+┃   ┃   ┣━━ 📄 _telemetry.py    # Автономный радар мониторинга O(1)
+┃   ┃   ┣━━ 📄 _process_manager.py # Реестр воркеров и Kill Switch
+┃   ┃   ┣━━ 📄 _wallet_unlocker.py # Координатор плагинов разблокировки
+┃   ┃   ┗━━ 📄 _dom_helpers.py  # Поиск в Shadow DOM и JS-инъекции React
+┃   ┗━━ 📂 auto/                # Режим AUTO (IDE & Скриптинг)
+┃       ┣━━ 📄 __init__.py
+┃       ┣━━ 📄 auto_gui.py      # Редактор кода с подсветкой Pygments
+┃       ┗━━ 📄 auto_logic.py    # Песочница выполнения сценариев (Subprocess IPC)
+┃
 ┗━━ 📂 wallets/                 # Автономные плагины разблокировки кошельков
+    ┣━━ 📄 __init__.py
+    ┣━━ 📄 metamask.json        # Паспорт MetaMask
+    ┣━━ 📄 metamask.py          # Модуль разблокировки MetaMask
+    ┣━━ 📄 rabby.json           # Паспорт Rabby Wallet
+    ┣━━ 📄 rabby.py             # Модуль разблокировки Rabby Wallet
+    ┣━━ 📄 okx.json              # Паспорт OKX Wallet
+    ┣━━ 📄 okx.py                # Модуль разблокировки OKX Wallet
+    ┣━━ 📄 phantom.json          # Паспорт Phantom Wallet
+    ┣━━ 📄 phantom.py            # Модуль разблокировки Phantom Wallet
+    ┣━━ 📄 keplr.json            # Паспорт Keplr Wallet
+    ┣━━ 📄 keplr.py              # Модуль разблокировки Keplr Wallet
+    ┣━━ 📄 backpack.json         # Паспорт Backpack Wallet
+    ┗━━ 📄 backpack.py           # Модуль разблокировки Backpack Wallet
 </pre>
 
 ---
