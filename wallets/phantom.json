@@ -1,0 +1,6 @@
+{
+  "name": "👻 Phantom",
+  "password_key": "phantom_pass",
+  "extension_url": "chrome-extension://bfnaelmomeimhlpmgjnjophhpkkoljpa/popup.html",
+  "has_update_modal": false
+}

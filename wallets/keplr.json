@@ -1,0 +1,6 @@
+{
+  "name": "🟣 Keplr",
+  "password_key": "keplr_pass",
+  "extension_url": "chrome-extension://dmkamcknogkgcdfhhbddcghachkejeap/popup.html",
+  "has_update_modal": false
+}

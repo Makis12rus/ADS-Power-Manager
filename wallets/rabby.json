@@ -1,0 +1,6 @@
+{
+  "name": "🦝 Rabby",
+  "password_key": "rabby_pass",
+  "extension_url": "chrome-extension://acmacodkjbdgmoleebolmdjonilkdbch/popup.html",
+  "has_update_modal": true
+}

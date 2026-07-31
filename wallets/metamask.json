@@ -1,0 +1,6 @@
+{
+  "name": "🦊 MetaMask",
+  "password_key": "metamask_pass",
+  "extension_url": "chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#/unlock",
+  "has_update_modal": false
+}

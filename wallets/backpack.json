@@ -1,0 +1,6 @@
+{
+  "name": "🎒 Backpack",
+  "password_key": "backpack_pass",
+  "extension_url": "chrome-extension://aflkmfhebedbjioipglgcbcmnbpgliof/popup.html",
+  "has_update_modal": false
+}

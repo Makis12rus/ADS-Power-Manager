@@ -1,0 +1,6 @@
+{
+  "name": "🟦 OKX",
+  "password_key": "okx_pass",
+  "extension_url": "chrome-extension://mcohilncbfahbmgdjkbpemcciiolgcge/popup.html#/unlock",
+  "has_update_modal": false
+}
