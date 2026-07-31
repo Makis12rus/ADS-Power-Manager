@@ -1,5 +1,5 @@
 <h1 align="center">🛡️ ADSProfile Manager</h1>
-<h3 align="center">Модульная десктопная платформа на PySide6 для комплексного управления, автоматизации и скриптинга профилей AdsPower</h3>
+<h3 align="center">Модульная десктопная платформа на PySide6 для комплексного управления, автоматизации и скриптинга антидетект-профилей AdsPower</h3>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.13+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
@@ -48,7 +48,6 @@
 
 ## 🏗️ Структура проекта
 
-```text
 ads_profile_manager/
 ┣━━ 📄 main.py                  # Точка входа и инициализация приложения
 ┣━━ 📂 core/                    # Ядро системы (Константы, Реестр, WinAPI, Стили)
@@ -57,4 +56,26 @@ ads_profile_manager/
 ┃   ┗━━ 📄 _watchdog.py         # Сторожевой процесс мониторинга GUI
 ┣━━ 📂 system/                  # Потокобезопасная служба логирования
 ┣━━ 📂 gui/                     # Главный интерфейс и компоновщики окон
-┣━━ 📂 moduls
+┣━━ 📂 moduls/                  # Изолированные модули
+┃   ┣━━ 📂 ads/                 # Режим ADS (Карусель, Автоматизация, Логика, API)
+┃   ┗━━ 📂 auto/                # Режим AUTO (IDE, Редактор Pygments, Песочница)
+┗━━ 📂 wallets/                 # Автономные плагины разблокировки кошельков
+
+---
+
+## 🛠️ Установка и Запуск
+
+### Требования
+* **ОС:** Windows 10/11 (для нативной работы с Windows Credential Manager и реестром).
+* **Python:** 3.13+
+
+### Запуск из исходного кода
+1. Клонировать репозиторий:
+   git clone https://github.com/Makis12rus/ADS-Power-Manager.git
+   cd ADS-Power-Manager
+
+2. Установить зависимости:
+   pip install -r requirements.txt
+
+3. Запустить приложение:
+   python main.py
