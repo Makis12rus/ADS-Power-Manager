@@ -72,12 +72,13 @@ ads_profile_manager/
 * **Python:** 3.13+
 
 ### Запуск из исходного кода
-1. Клонировать репозиторий:
-   git clone https://github.com/Makis12rus/ADS-Power-Manager.git
-   cd ADS-Power-Manager
 
-2. Установить зависимости:
-   pip install -r requirements.txt
+1. **Клонировать репозиторий и перейти в папку:**
+<pre><code>git clone https://github.com/Makis12rus/ADS-Power-Manager.git
+cd ADS-Power-Manager</code></pre>
 
-3. Запустить приложение:
-   python main.py
+2. **Установить зависимости:**
+<pre><code>pip install -r requirements.txt</code></pre>
+
+3. **Запустить приложение:**
+<pre><code>python main.py</code></pre>
